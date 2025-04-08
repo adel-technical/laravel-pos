@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("pages.categories.create");
     }
 
     /**
@@ -34,7 +34,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category_name' => 'required|string|max:255,unique:categories',
+        ]);
+        Category::create([
+            'category_name'=>$request->category_name,
+        ]);
+        return redirect()->route('categories.index')->with('success', 'تم اضافة البيانات بنجاح!');
     }
 
     /**
@@ -48,24 +54,32 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('pages.categories.edit',compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'category_name' => 'required|string|max:255',
+        ]);
+        $category = Category::findOrFail($id);
+        $category->category_name = $request->category_name;
+        $category->save();
+        return redirect()->route('categories.index')->with('success', 'تم التحديث بنجاح');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+        return redirect()->route('categories.index')->with('success', 'تم الحذف بنجاح');
     }
 }

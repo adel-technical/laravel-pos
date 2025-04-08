@@ -53,7 +53,7 @@
                         text: "لن تتمكن من التراجع عن هذا الإجراء!",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#d33',
+                        confirmButtonColor: '#dc3545',
                         cancelButtonColor: '#3085d6',
                         cancelButtonText: 'إلغاء',
                         confirmButtonText: 'نعم، احذف !'

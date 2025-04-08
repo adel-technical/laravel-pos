@@ -8,8 +8,7 @@
             <div class="card-header">
                 @can('create user')
                 <a href="{{ route('categories.create') }}" class="btn btn-primary">
-                    أضافة جديد
-                    + 
+                    أضافة جديد + 
                 </a>
                 @endcan
             </div>
@@ -32,13 +31,13 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->category_name }}</td>
                                 <td>
-                                    @can('edit category')
+                                    {{-- @can('edit category') --}}
                                     <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm">تعديل</a>
-                                    @endcan
+                                    {{-- @endcan
 
-                                    @can('delete category')
+                                    @can('delete category') --}}
                                     <x-button-delete :id="$category->id" route="categories" />
-                                    @endcan 
+                                    {{-- @endcan  --}}
                                 </td>
                             </tr>
                         @endforeach

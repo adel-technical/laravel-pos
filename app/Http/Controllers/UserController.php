@@ -51,7 +51,7 @@ class UserController extends Controller
 
         $user->assignRole($request->roles);
 
-        return redirect()->route('users.index')->with('success', 'تم إنشاء المستخدم بنجاح!');
+        return redirect()->route('users.index')->with('success', 'تم اضافة البيانات بنجاح!');
     }
 
     public function show($id): View
@@ -92,12 +92,12 @@ class UserController extends Controller
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')->with('success', 'تم تحديث المستخدم بنجاح');
+        return redirect()->route('users.index')->with('success', 'تم التحديث بنجاح');
     }
 
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        return redirect()->route('users.index')->with('success', 'تم حذف المستخدم بنجاح');
+        return redirect()->route('users.index')->with('success', 'تم الحذف بنجاح');
     }
 }

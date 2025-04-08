@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <label for="confirm-password">تأكيد كلمة المرور</label>
-                            <input type="password" class="form-control" id="confirm-password" name="confirm-password"
+                            <input type="password" class="form-control" id="confirm-password" name="confirm_password"
                                 placeholder="تأكيد كلمة المرور">
                             @error('confirm-password')
                                 <span class="text-danger">{{ $message }}</span>
