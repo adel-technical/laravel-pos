@@ -7,11 +7,21 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes(['register'=> false]);
+
+Route::get('lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'ar'])) {
+        abort(400);
+    }
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+    return redirect()->back();
+})->name('lang.switch');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::prefix('users')->group(function () {
